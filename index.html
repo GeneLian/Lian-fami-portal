@@ -139,21 +139,15 @@
         <p class="subtitle">✨ 點擊喜歡的圖示，直接全螢幕暢玩！ ✨</p>
 
         <div class="menu">
-            <!-- 1. 生存遊戲 -->
+            <!-- 1. Pokesurvivor 生存遊戲 (原生 Icon，支援全螢幕內嵌) -->
             <div class="card" onclick="openFullscreen('https://pokesurvivor.com', true)">
-                <img src="https://www.google.com/s2/favicons?domain=pokesurvivor.com&sz=128" alt="icon">
+                <img src="https://www.google.com/s2/favicons?domain=pokesurvivor.com&sz=128" alt="Pokesurvivor icon">
                 <span>生存遊戲</span>
             </div>
 
-            <!-- 2. 寶可夢官網 -->
-            <div class="card" onclick="openFullscreen('https://tw.portal-pokemon.com', false)">
-                <img src="https://www.google.com/s2/favicons?domain=tw.portal-pokemon.com&sz=128" alt="icon">
-                <span>寶可夢官網</span>
-            </div>
-
-            <!-- 3. 寶可夢圖鑑 -->
+            <!-- 2. 寶可夢圖鑑 (原生 Icon，因官方防護會自動開新分頁) -->
             <div class="card" onclick="openFullscreen('https://tw.portal-pokemon.com/pokedex/', false)">
-                <img src="https://www.google.com/s2/favicons?domain=tw.portal-pokemon.com&sz=128" alt="icon">
+                <img src="https://www.google.com/s2/favicons?domain=tw.portal-pokemon.com&sz=128" alt="Pokemon Pokedex icon">
                 <span>寶可夢圖鑑</span>
             </div>
         </div>
@@ -168,14 +162,14 @@
     <script>
         function openFullscreen(url, canEmbed) {
             if (canEmbed) {
-                // 如果該網站允許內嵌，直接在全螢幕 iframe 中展開並顯示半透明返回鍵
+                // 支援內嵌的網站：進入全螢幕 iframe 並顯示半透明返回鍵
                 const fsView = document.getElementById('fullscreen-view');
                 const iframe = document.getElementById('fullscreen-iframe');
                 
                 iframe.src = url;
                 fsView.style.display = 'block';
             } else {
-                // 如果遇到像寶可夢官網這種會被防護阻擋的網站，則安全地幫你開新分頁
+                // 不支援內嵌的官方網站：自動安全地幫你開新分頁
                 window.open(url, '_blank');
             }
         }
@@ -184,7 +178,7 @@
             const fsView = document.getElementById('fullscreen-view');
             const iframe = document.getElementById('fullscreen-iframe');
             
-            // 關閉全螢幕視窗並清空 iframe（停止背景執行與聲音）
+            // 關閉全螢幕視窗並清空 iframe（停止背景音樂與遊戲執行）
             fsView.style.display = 'none';
             iframe.src = 'about:blank';
         }
