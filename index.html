@@ -2,10 +2,15 @@
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>🌟 寶貝們的快樂童話樂園 🌟</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Noto+Sans+TC:wght@500;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            user-select: none;
+        }
 
         body {
             font-family: 'Fredoka', 'Noto Sans TC', sans-serif;
@@ -21,15 +26,15 @@
 
         h1 {
             color: #ff4757;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             margin-bottom: 5px;
             text-shadow: 2px 2px 0px #fff, 4px 4px 10px rgba(0,0,0,0.1);
         }
 
         p.subtitle {
             color: #2f3542;
-            font-size: 1.2rem;
-            margin-bottom: 25px;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
             font-weight: 700;
         }
 
@@ -37,20 +42,20 @@
         .menu {
             display: flex;
             justify-content: center;
-            gap: 25px;
-            margin-bottom: 25px;
+            gap: 20px;
+            margin-bottom: 20px;
             flex-wrap: wrap;
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             border: 4px solid #ffa502;
-            padding: 15px 25px;
-            border-radius: 25px;
+            padding: 12px 20px;
+            border-radius: 20px;
             box-shadow: 0 8px 15px rgba(0,0,0,0.1);
             text-decoration: none;
             color: #2f3542;
-            width: 130px;
+            width: 140px;
             cursor: pointer;
             display: flex;
             flex-direction: column;
@@ -59,34 +64,47 @@
         }
 
         .card:hover {
-            transform: translateY(-10px) scale(1.05);
+            transform: translateY(-6px) scale(1.05);
             background: #fff;
             border-color: #ff6b81;
-            box-shadow: 0 15px 25px rgba(255, 107, 129, 0.3);
+            box-shadow: 0 12px 20px rgba(255, 107, 129, 0.3);
         }
 
         .card img {
-            width: 50px;
-            height: 50px;
-            margin-bottom: 10px;
+            width: 45px;
+            height: 45px;
+            margin-bottom: 8px;
             object-fit: contain;
         }
 
         .card span {
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 700;
             color: #3742fa;
         }
 
-        /* 內嵌視窗外框 (加上可愛圓角與邊框) */
+        .tag {
+            font-size: 0.75rem;
+            background: #ff4757;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-top: 5px;
+        }
+
+        .tag.embed {
+            background: #2ed573;
+        }
+
+        /* 內嵌視窗外框 */
         .iframe-container {
             width: 100%;
-            max-width: 1000px;
-            height: 550px;
+            max-width: 950px;
+            height: 500px;
             margin: 0 auto;
             background: white;
             border: 6px solid #7bed9f;
-            border-radius: 30px;
+            border-radius: 25px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.15);
             overflow: hidden;
             display: flex;
@@ -96,20 +114,20 @@
         .iframe-header {
             background: #2ed573;
             color: white;
-            padding: 12px 20px;
+            padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .iframe-header a {
             background: #ffa502;
             color: white;
-            padding: 6px 14px;
-            border-radius: 15px;
-            font-size: 0.9rem;
+            padding: 5px 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
             text-decoration: none;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             transition: background 0.2s;
@@ -130,39 +148,50 @@
 <body>
 
     <h1>🎈 寶貝們的快樂童話樂園 🎈</h1>
-    <p class="subtitle">✨ 點擊上方的可愛小圖示，馬上開始玩耍吧！ ✨</p>
+    <p class="subtitle">✨ 點擊喜歡的網站，直接玩或前往大世界！ ✨</p>
 
-    <!-- 上方童趣選單 -->
+    <!-- 上方選單 -->
     <div class="menu">
-        <div class="card" onclick="loadSite('https://pokesurvivor.com', 'Pokesurvivor 生存遊戲')">
+        <!-- 網站一：支援內嵌 (Embed) -->
+        <div class="card" onclick="openSite('https://pokesurvivor.com', 'Pokesurvivor 生存遊戲', true)">
             <img src="https://www.google.com/s2/favicons?domain=pokesurvivor.com&sz=128" alt="icon">
             <span>生存遊戲</span>
+            <span class="tag embed">直接玩</span>
         </div>
-        <div class="card" onclick="loadSite('https://tw.portal-pokemon.com', '寶可夢台灣官網')">
+
+        <!-- 網站二：不支援內嵌，改開新分頁 (New Tab) -->
+        <div class="card" onclick="openSite('https://tw.portal-pokemon.com', '寶可夢台灣官網', false)">
             <img src="https://www.google.com/s2/favicons?domain=tw.portal-pokemon.com&sz=128" alt="icon">
             <span>寶可夢官網</span>
+            <span class="tag">開新分頁</span>
         </div>
     </div>
 
-    <!-- 下方內嵌視窗 -->
-    <div class="iframe-container">
+    <!-- 下方內嵌視窗 (只有選擇「直接玩」的網站會顯示在這裡) -->
+    <div class="iframe-container" id="container-box">
         <div class="iframe-header">
-            <span id="iframe-title">🏰 請先點擊上方的小圖示唷！</span>
-            <a id="external-link" href="#" target="_blank" style="display:none;">在新分頁大螢幕玩 🚀</a>
+            <span id="iframe-title">🏰 請先點擊上方「直接玩」的圖示唷！</span>
+            <a id="external-link" href="#" target="_blank" style="display:none;">在大螢幕玩 🚀</a>
         </div>
         <iframe id="viewer" src="about:blank" title="Game View"></iframe>
     </div>
 
     <script>
-        function loadSite(url, titleName) {
-            const iframe = document.getElementById('viewer');
-            const title = document.getElementById('iframe-title');
-            const extLink = document.getElementById('external-link');
-            
-            iframe.src = url;
-            title.innerText = '🎮 ' + titleName;
-            extLink.href = url;
-            extLink.style.display = 'inline-block';
+        function openSite(url, titleName, canEmbed) {
+            if (canEmbed) {
+                // 邏輯 1：可以內嵌的網站，載入到下方的 iframe 中
+                const iframe = document.getElementById('viewer');
+                const title = document.getElementById('iframe-title');
+                const extLink = document.getElementById('external-link');
+                
+                iframe.src = url;
+                title.innerText = '🎮 ' + titleName;
+                extLink.href = url;
+                extLink.style.display = 'inline-block';
+            } else {
+                // 邏輯 2：不能內嵌的網站，直接幫你開新分頁
+                window.open(url, '_blank');
+            }
         }
     </script>
 
