@@ -5,13 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>寶可夢兒童安全入口網</title>
     
-    <!-- 匯入 ToneOZ / 字嗨 注音標楷網頁字型 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toneoz-font-bopomofo-kai@1.0.0/style.css">
-
     <style>
-        /* 套用注音標楷體 */
+        /* 1. 載入你在 fonts/ 資料夾裡的注音標楷體 */
+        @font-face {
+            font-family: 'MyBpmfKai';
+            src: url('./fonts/BpmfZiHiKaiStd-Regular.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* 2. 將字型套用到全站 */
         body {
-            font-family: 'ToneOZ Bopomofo Kai', "Microsoft JhengHei", sans-serif;
+            font-family: 'MyBpmfKai', "Microsoft JhengHei", sans-serif;
             background-color: #f7f9fa;
             background-image: radial-gradient(#e0f2fe 2px, transparent 2px);
             background-size: 24px 24px;
@@ -20,7 +25,7 @@
             color: #2b2b2b;
         }
 
-        /* 主標題樣式 */
+        /* 標題與寶可夢主題風格 */
         h1 {
             color: #cc0000;
             font-size: 2.5rem;
@@ -34,7 +39,7 @@
             margin-bottom: 30px;
         }
 
-        /* 寶可夢卡片容器 */
+        /* 容器與卡片排版 */
         .portal-container {
             display: flex;
             flex-wrap: wrap;
@@ -44,7 +49,6 @@
             margin: 0 auto;
         }
 
-        /* 白名單連結卡片 */
         .card {
             background-color: white;
             border: 4px solid #ffde00;
@@ -66,11 +70,11 @@
             border-color: #cc0000;
         }
 
-        /* 引用的 pokesurvivor 寶可夢圖片 */
+        /* 引用 pokesurvivor 的寶可夢點陣圖 */
         .pokemon-img {
             width: 80px;
             height: 80px;
-            image-rendering: pixelated; /* 保持像素風格清析 */
+            image-rendering: pixelated;
             margin-bottom: 10px;
         }
 
@@ -87,19 +91,19 @@
     <p class="subtitle">點擊寶可夢夥伴，前往安全的網站探險吧！</p>
 
     <div class="portal-container">
-        <!-- 卡片 1：使用 pokesurvivor 的皮卡丘 (Pikachu - #025) 資源 -->
+        <!-- 卡片 1：皮卡丘 (Pikachu) -->
         <a class="card" href="https://pedia.cloud.edu.tw" target="_blank">
             <img class="pokemon-img" src="https://raw.githubusercontent.com/JPTER78/pokesurvivor/main/public/sprites/pokemon/25.png" alt="皮卡丘">
             <span class="card-title">教育部萌典</span>
         </a>
 
-        <!-- 卡片 2：使用 pokesurvivor 的小火龍 (Charmander - #004) 資源 -->
+        <!-- 卡片 2：小火龍 (Charmander) -->
         <a class="card" href="https://www.coolmathgames.com" target="_blank">
             <img class="pokemon-img" src="https://raw.githubusercontent.com/JPTER78/pokesurvivor/main/public/sprites/pokemon/4.png" alt="小火龍">
             <span class="card-title">CoolMath遊戲</span>
         </a>
 
-        <!-- 卡片 3：使用 pokesurvivor 的傑尼龜 (Squirtle - #007) 資源 -->
+        <!-- 卡片 3：傑尼龜 (Squirtle) -->
         <a class="card" href="https://www.childrensbooksonline.org" target="_blank">
             <img class="pokemon-img" src="https://raw.githubusercontent.com/JPTER78/pokesurvivor/main/public/sprites/pokemon/7.png" alt="傑尼龜">
             <span class="card-title">童書繪本網</span>
