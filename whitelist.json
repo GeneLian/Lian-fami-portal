@@ -1,9 +1,23 @@
 [
-     {
-       "title": "萌典辭典",
-       "url": "https://pedia.cloud.edu.tw",
-       "category": "學習",
-       "pokemonId": 25,
-       "desc": "查詢國字的好工具"
-     }
-   ]
+  {
+    "title": "教育部萌典",
+    "url": "https://pedia.cloud.edu.tw",
+    "category": "學習字典",
+    "pokemonId": 25,
+    "desc": "查注音與國字的好幫手"
+  },
+  {
+    "title": "CoolMath遊戲",
+    "url": "https://www.coolmathgames.com",
+    "category": "益智數學",
+    "pokemonId": 4,
+    "desc": "好玩的邏輯與數學遊戲"
+  },
+  {
+    "title": "童書繪本網",
+    "url": "https://www.childrensbooksonline.org",
+    "category": "閱讀繪本",
+    "pokemonId": 7,
+    "desc": "豐富的兒童有聲繪本"
+  }
+]
