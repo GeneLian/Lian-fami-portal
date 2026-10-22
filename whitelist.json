@@ -19,5 +19,19 @@
     "category": "閱讀繪本",
     "pokemonId": 7,
     "desc": "豐富的兒童有聲繪本"
+  },
+  {
+    "title": "NASA Kids' Club",
+    "url": "https://www.nasa.gov/kidsclub/index.html",
+    "category": "科學探索",
+    "pokemonId": 150,
+    "desc": "跟著超夢一起探索宇宙太空"
+  },
+  {
+    "title": "Scratch 創意積木",
+    "url": "https://scratch.mit.edu",
+    "category": "程式啟蒙",
+    "pokemonId": 133,
+    "desc": "用積木快樂發明自己的小遊戲"
   }
 ]
