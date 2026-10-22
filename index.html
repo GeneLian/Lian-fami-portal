@@ -6,7 +6,7 @@
     <title>寶可夢兒童安全入口網</title>
     
     <style>
-        /* 1. 載入你在 fonts/ 資料夾裡的注音標楷體 */
+        /* 載入專案內的注音標楷體 */
         @font-face {
             font-family: 'MyBpmfKai';
             src: url('./fonts/BpmfZiHiKaiStd-Regular.woff2') format('woff2');
@@ -14,51 +14,55 @@
             font-style: normal;
         }
 
-        /* 2. 將字型套用到全站 */
         body {
             font-family: 'MyBpmfKai', "Microsoft JhengHei", sans-serif;
             background-color: #f7f9fa;
             background-image: radial-gradient(#e0f2fe 2px, transparent 2px);
             background-size: 24px 24px;
             text-align: center;
-            padding: 20px;
+            padding: 30px;
             color: #2b2b2b;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        /* 標題與寶可夢主題風格 */
         h1 {
             color: #cc0000;
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             text-shadow: 2px 2px 0px #ffde00;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
 
         .subtitle {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: #4a5568;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
-        /* 容器與卡片排版 */
+        /* 卡片容器 */
         .portal-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
-            max-width: 900px;
-            margin: 0 auto;
+            gap: 25px;
+            max-width: 1000px;
+            margin-bottom: 60px;
         }
 
+        /* 白名單卡片 */
         .card {
             background-color: white;
             border: 4px solid #ffde00;
-            border-radius: 16px;
-            padding: 20px;
-            width: 200px;
+            border-radius: 20px;
+            padding: 25px 20px;
+            width: 210px;
             text-decoration: none;
             color: #333;
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -66,49 +70,139 @@
 
         .card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
             border-color: #cc0000;
         }
 
-        /* 引用 pokesurvivor 的寶可夢點陣圖 */
         .pokemon-img {
-            width: 80px;
-            height: 80px;
+            width: 90px;
+            height: 90px;
             image-rendering: pixelated;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            transition: transform 0.3s;
+        }
+
+        .card:hover .pokemon-img {
+            transform: scale(1.1) rotate(5deg);
         }
 
         .card-title {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: bold;
             color: #2b7a78;
+            margin-bottom: 5px;
+        }
+
+        .card-desc {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        /* 互動寶可夢夥伴區塊 (右下角) */
+        #companion-box {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            z-index: 1000;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        #companion-speech {
+            background: white;
+            border: 3px solid #ffde00;
+            padding: 8px 15px;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #cc0000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-bottom: 8px;
+            position: relative;
+            max-width: 180px;
+        }
+
+        #companion-img {
+            width: 100px;
+            height: 100px;
+            image-rendering: pixelated;
+            filter: drop-shadow(0 5px 5px rgba(0,0,0,0.2));
         }
     </style>
 </head>
 <body>
 
-    <h1>⚡ 寶可夢兒童白名單入口 ⚡</h1>
-    <p class="subtitle">點擊寶可夢夥伴，前往安全的網站探險吧！</p>
+    <h1>⚡ 寶可夢兒童安全入口網 ⚡</h1>
+    <p class="subtitle">點擊下方夥伴，前往安心的網站探險吧！</p>
 
-    <div class="portal-container">
-        <!-- 卡片 1：皮卡丘 (Pikachu) -->
-        <a class="card" href="https://pedia.cloud.edu.tw" target="_blank">
-            <img class="pokemon-img" src="https://raw.githubusercontent.com/JPTER78/pokesurvivor/main/public/sprites/pokemon/25.png" alt="皮卡丘">
-            <span class="card-title">教育部萌典</span>
-        </a>
-
-        <!-- 卡片 2：小火龍 (Charmander) -->
-        <a class="card" href="https://www.coolmathgames.com" target="_blank">
-            <img class="pokemon-img" src="https://raw.githubusercontent.com/JPTER78/pokesurvivor/main/public/sprites/pokemon/4.png" alt="小火龍">
-            <span class="card-title">CoolMath遊戲</span>
-        </a>
-
-        <!-- 卡片 3：傑尼龜 (Squirtle) -->
-        <a class="card" href="https://www.childrensbooksonline.org" target="_blank">
-            <img class="pokemon-img" src="https://raw.githubusercontent.com/JPTER78/pokesurvivor/main/public/sprites/pokemon/7.png" alt="傑尼龜">
-            <span class="card-title">童書繪本網</span>
-        </a>
+    <!-- 這裡會由 JavaScript 自動讀取 whitelist.json 產生卡片 -->
+    <div class="portal-container" id="card-container">
+        <p style="color: #888;">正在呼叫寶可夢白名單清單...</p>
     </div>
 
+    <!-- 右下角互動寶可夢夥伴 -->
+    <div id="companion-box" onclick="interactCompanion()">
+        <div id="companion-speech">點我換夥伴！</div>
+        <img id="companion-img" src="https://raw.githubusercontent.com/JPTER78/pokesurvivor/main/public/sprites/pokemon/25.png" alt="夥伴">
+    </div>
+
+    <script>
+        // 1. 自動從 whitelist.json 載入資料並動態建立網站卡片
+        async function loadWhitelist() {
+            try {
+                const response = await fetch('whitelist.json');
+                const data = await response.json();
+                const container = document.getElementById('card-container');
+                container.innerHTML = ''; // 清除載入文字
+
+                data.forEach(item => {
+                    const card = document.createElement('a');
+                    card.className = 'card';
+                    card.href = item.url;
+                    card.target = '_blank';
+
+                    card.innerHTML = `
+                        <img class="pokemon-img" src="https://raw.githubusercontent.com/JPTER78/pokesurvivor/main/public/sprites/pokemon/${item.pokemonId}.png" alt="${item.title}">
+                        <span class="card-title">${item.title}</span>
+                        <span class="card-desc">${item.desc}</span>
+                    `;
+                    container.appendChild(card);
+                });
+            } catch (error) {
+                console.error('讀取 whitelist.json 失敗:', error);
+                document.getElementById('card-container').innerHTML = '<p style="color:red;">載入白名單失敗，請確認 whitelist.json 格式是否正確！</p>';
+            }
+        }
+
+        loadWhitelist();
+
+        // 2. 右下角互動寶可夢點擊邏輯
+        const companionIds = [25, 4, 7, 1, 39, 133]; // 皮卡丘, 小火龍, 傑尼龜, 妙蛙種子, 胖丁, 伊布
+        const speeches = [
+            "皮卡皮卡！今天想去哪裡玩？",
+            "小火龍準備好囉！",
+            "傑尼傑尼～點上方按鈕出發！",
+            "妙蛙種子陪你一起學習！",
+            "胖丁唱歌給你聽～",
+            "伊布進化無限可能！"
+        ];
+        let currentIndex = 0;
+
+        function interactCompanion() {
+            currentIndex = (currentIndex + 1) % companionIds.length;
+            const id = companionIds[currentIndex];
+            
+            document.getElementById('companion-img').src = `https://raw.githubusercontent.com/JPTER78/pokesurvivor/main/public/sprites/pokemon/${id}.png`;
+            document.getElementById('companion-speech').innerText = speeches[currentIndex];
+        }
+    </script>
 </body>
 </html>
