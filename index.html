@@ -6,7 +6,7 @@
     <title>寶可夢兒童安全入口網</title>
     
     <style>
-        /* 載入專案內的注音標楷體 */
+        /* 1. 正確載入專案內的注音標楷體 */
         @font-face {
             font-family: 'MyBpmfKai';
             src: url('./fonts/BpmfZiHiKaiStd-Regular.woff2') format('woff2');
@@ -14,8 +14,12 @@
             font-style: normal;
         }
 
+        /* 2. 將字型強制套用到全站所有文字 */
+        body, h1, h2, h3, p, span, a, div {
+            font-family: 'MyBpmfKai', "Microsoft JhengHei", sans-serif !important;
+        }
+
         body {
-            font-family: 'MyBpmfKai', "Microsoft JhengHei", sans-serif;
             background-color: #f7f9fa;
             background-image: radial-gradient(#e0f2fe 2px, transparent 2px);
             background-size: 24px 24px;
@@ -98,7 +102,7 @@
             color: #666;
         }
 
-        /* 互動寶可夢夥伴區塊 (右下角) */
+        /* 右下角互動寶可夢夥伴 */
         #companion-box {
             position: fixed;
             bottom: 20px;
@@ -151,13 +155,10 @@
     <!-- 右下角互動寶可夢夥伴 -->
     <div id="companion-box" onclick="interactCompanion()">
         <div id="companion-speech">點我換夥伴！</div>
-        <img id="companion-img" src="https://cdn.jsdelivr.net/gh/JPTER78/pokesurvivor/public/sprites/pokemon/25.png" alt="夥伴">
+        <img id="companion-img" src="./images/25/front.png" alt="夥伴">
     </div>
 
     <script>
-        // 使用 jsDelivr CDN 作為穩定的圖片來源
-        const getPokemonImgUrl = (id) => `https://cdn.jsdelivr.net/gh/JPTER78/pokesurvivor/public/sprites/pokemon/${id}.png`;
-
         // 1. 自動從 whitelist.json 載入資料並動態建立網站卡片
         async function loadWhitelist() {
             try {
@@ -172,8 +173,9 @@
                     card.href = item.url;
                     card.target = '_blank';
 
+                    // 支援你用整包資料夾的相對路徑 (例如 ./images/25/front.png)
                     card.innerHTML = `
-                        <img class="pokemon-img" src="${getPokemonImgUrl(item.pokemonId)}" alt="${item.title}">
+                        <img class="pokemon-img" src="${item.image}" alt="${item.title}">
                         <span class="card-title">${item.title}</span>
                         <span class="card-desc">${item.desc}</span>
                     `;
@@ -181,21 +183,19 @@
                 });
             } catch (error) {
                 console.error('讀取 whitelist.json 失敗:', error);
-                document.getElementById('card-container').innerHTML = '<p style="color:red;">載入白名單失敗，請確認 whitelist.json 格式是否正確！</p>';
+                document.getElementById('card-container'].innerHTML = '<p style="color:red;">載入白名單失敗，請確認 whitelist.json 格式是否正確！</p>';
             }
         }
 
         loadWhitelist();
 
-        // 2. 右下角互動寶可夢點擊邏輯
-        const companionIds = [25, 4, 7, 1, 39, 133]; 
+        // 2. 右下角互動寶可夢點擊邏輯 (對應你資料夾裡的數字編號)
+        const companionIds = [25, 4, 7, 1]; 
         const speeches = [
             "皮卡皮卡！今天想去哪裡玩？",
             "小火龍準備好囉！",
             "傑尼傑尼～點上方按鈕出發！",
-            "妙蛙種子陪你一起學習！",
-            "胖丁唱歌給你聽～",
-            "伊布進化無限可能！"
+            "妙蛙種子陪你一起學習！"
         ];
         let currentIndex = 0;
 
@@ -203,7 +203,7 @@
             currentIndex = (currentIndex + 1) % companionIds.length;
             const id = companionIds[currentIndex];
             
-            document.getElementById('companion-img').src = getPokemonImgUrl(id);
+            document.getElementById('companion-img').src = `./images/${id}/front.png`;
             document.getElementById('companion-speech').innerText = speeches[currentIndex];
         }
     </script>
