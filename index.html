@@ -6,7 +6,7 @@
     <title>寶可夢兒童安全入口網</title>
     
     <style>
-        /* 1. 正確載入專案內的注音標楷體 */
+        /* 1. 載入專案內的注音標楷體 */
         @font-face {
             font-family: 'MyBpmfKai';
             src: url('./fonts/BpmfZiHiKaiStd-Regular.woff2') format('woff2');
@@ -14,7 +14,7 @@
             font-style: normal;
         }
 
-        /* 2. 將字型強制套用到全站所有文字 */
+        /* 2. 強制全站套用注音標楷體 */
         body, h1, h2, h3, p, span, a, div {
             font-family: 'MyBpmfKai', "Microsoft JhengHei", sans-serif !important;
         }
@@ -155,7 +155,8 @@
     <!-- 右下角互動寶可夢夥伴 -->
     <div id="companion-box" onclick="interactCompanion()">
         <div id="companion-speech">點我換夥伴！</div>
-        <img id="companion-img" src="./images/25/front.png" alt="夥伴">
+        <!-- 預設顯示皮卡丘 (編號 25 的 Idle.png 或你可以自由調整) -->
+        <img id="companion-img" src="./images/25/Idle.png" alt="夥伴">
     </div>
 
     <script>
@@ -173,9 +174,9 @@
                     card.href = item.url;
                     card.target = '_blank';
 
-                    // 支援你用整包資料夾的相對路徑 (例如 ./images/25/front.png)
+                    // 這裡直接對應你資料夾裡的編號與 Idle.png 圖片
                     card.innerHTML = `
-                        <img class="pokemon-img" src="${item.image}" alt="${item.title}">
+                        <img class="pokemon-img" src="./images/${item.pokemonId}/Idle.png" alt="${item.title}">
                         <span class="card-title">${item.title}</span>
                         <span class="card-desc">${item.desc}</span>
                     `;
@@ -183,19 +184,19 @@
                 });
             } catch (error) {
                 console.error('讀取 whitelist.json 失敗:', error);
-                document.getElementById('card-container'].innerHTML = '<p style="color:red;">載入白名單失敗，請確認 whitelist.json 格式是否正確！</p>';
+                document.getElementById('card-container').innerHTML = '<p style="color:red;">載入白名單失敗，請確認 whitelist.json 格式是否正確！</p>';
             }
         }
 
         loadWhitelist();
 
-        // 2. 右下角互動寶可夢點擊邏輯 (對應你資料夾裡的數字編號)
-        const companionIds = [25, 4, 7, 1]; 
+        // 2. 右下角互動寶可夢點擊邏輯
+        const companionIds = [25, 4, 7, 150]; 
         const speeches = [
             "皮卡皮卡！今天想去哪裡玩？",
             "小火龍準備好囉！",
             "傑尼傑尼～點上方按鈕出發！",
-            "妙蛙種子陪你一起學習！"
+            "超夢陪你一起探索宇宙！"
         ];
         let currentIndex = 0;
 
@@ -203,7 +204,7 @@
             currentIndex = (currentIndex + 1) % companionIds.length;
             const id = companionIds[currentIndex];
             
-            document.getElementById('companion-img').src = `./images/${id}/front.png`;
+            document.getElementById('companion-img').src = `./images/${id}/Idle.png`;
             document.getElementById('companion-speech').innerText = speeches[currentIndex];
         }
     </script>
