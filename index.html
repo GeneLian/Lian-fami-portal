@@ -151,17 +151,20 @@
     <!-- 右下角互動寶可夢夥伴 -->
     <div id="companion-box" onclick="interactCompanion()">
         <div id="companion-speech">點我換夥伴！</div>
-        <img id="companion-img" src="https://raw.githubusercontent.com/JPTER78/pokesurvivor/main/public/sprites/pokemon/25.png" alt="夥伴">
+        <img id="companion-img" src="https://cdn.jsdelivr.net/gh/JPTER78/pokesurvivor/public/sprites/pokemon/25.png" alt="夥伴">
     </div>
 
     <script>
+        // 使用 jsDelivr CDN 作為穩定的圖片來源
+        const getPokemonImgUrl = (id) => `https://cdn.jsdelivr.net/gh/JPTER78/pokesurvivor/public/sprites/pokemon/${id}.png`;
+
         // 1. 自動從 whitelist.json 載入資料並動態建立網站卡片
         async function loadWhitelist() {
             try {
                 const response = await fetch('whitelist.json');
                 const data = await response.json();
                 const container = document.getElementById('card-container');
-                container.innerHTML = ''; // 清除載入文字
+                container.innerHTML = ''; 
 
                 data.forEach(item => {
                     const card = document.createElement('a');
@@ -170,7 +173,7 @@
                     card.target = '_blank';
 
                     card.innerHTML = `
-                        <img class="pokemon-img" src="https://raw.githubusercontent.com/JPTER78/pokesurvivor/main/public/sprites/pokemon/${item.pokemonId}.png" alt="${item.title}">
+                        <img class="pokemon-img" src="${getPokemonImgUrl(item.pokemonId)}" alt="${item.title}">
                         <span class="card-title">${item.title}</span>
                         <span class="card-desc">${item.desc}</span>
                     `;
@@ -185,7 +188,7 @@
         loadWhitelist();
 
         // 2. 右下角互動寶可夢點擊邏輯
-        const companionIds = [25, 4, 7, 1, 39, 133]; // 皮卡丘, 小火龍, 傑尼龜, 妙蛙種子, 胖丁, 伊布
+        const companionIds = [25, 4, 7, 1, 39, 133]; 
         const speeches = [
             "皮卡皮卡！今天想去哪裡玩？",
             "小火龍準備好囉！",
@@ -200,7 +203,7 @@
             currentIndex = (currentIndex + 1) % companionIds.length;
             const id = companionIds[currentIndex];
             
-            document.getElementById('companion-img').src = `https://raw.githubusercontent.com/JPTER78/pokesurvivor/main/public/sprites/pokemon/${id}.png`;
+            document.getElementById('companion-img').src = getPokemonImgUrl(id);
             document.getElementById('companion-speech').innerText = speeches[currentIndex];
         }
     </script>
