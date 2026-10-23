@@ -6,17 +6,17 @@
     <title>寶可夢兒童安全入口網</title>
     
     <style>
-        /* 1. 載入專案內的注音標楷體 */
+        /* 1. 精準對應字型參數來載入本地注音標楷體 */
         @font-face {
-            font-family: 'MyBpmfKai';
+            font-family: 'Bpmf Zi Kai Std';
             src: url('./fonts/BpmfZiHiKaiStd-Regular.woff2') format('woff2');
-            font-weight: normal;
+            font-weight: 400;
             font-style: normal;
         }
 
-        /* 2. 強制全站套用注音標楷體 */
+        /* 2. 強制全站套用正確的字型名稱 */
         body, h1, h2, h3, p, span, a, div {
-            font-family: 'MyBpmfKai', "Microsoft JhengHei", sans-serif !important;
+            font-family: 'Bpmf Zi Kai Std', "Microsoft JhengHei", sans-serif !important;
         }
 
         body {
@@ -160,15 +160,12 @@
     </div>
 
     <script>
-        // 使用原作者的 CDN 穩定來源，確保每張圖都只有乾淨的單一主體
+        // 使用穩定的 CDN 確保圖片為乾淨的單一主體
         const getPokemonImgUrl = (id) => `https://cdn.jsdelivr.net/gh/JPTER78/pokesurvivor/public/sprites/pokemon/${id}.png`;
 
         async function loadWhitelist() {
             try {
                 const response = await fetch('whitelist.json');
-                if (!response.ok) {
-                    throw new Error('找不到 whitelist.json 檔案');
-                }
                 const data = await response.json();
                 const container = document.getElementById('card-container');
                 container.innerHTML = ''; 
@@ -187,19 +184,22 @@
                     container.appendChild(card);
                 });
             } catch (error) {
-                console.error('讀取失敗:', error);
-                document.getElementById('card-container').innerHTML = `<p style="color:red; font-weight:bold;">讀取白名單失敗：${error.message}</p>`;
+                console.error('讀取 whitelist.json 失敗:', error);
+                document.getElementById('card-container').innerHTML = '<p style="color:red;">載入白名單失敗！</p>';
             }
         }
 
         loadWhitelist();
 
-        const companionIds = [25, 4, 7, 150]; 
+        // 右下角互動寶可夢點擊邏輯
+        const companionIds = [25, 4, 7, 1, 39, 133]; 
         const speeches = [
             "皮卡皮卡！今天想去哪裡玩？",
             "小火龍準備好囉！",
             "傑尼傑尼～點上方按鈕出發！",
-            "超夢陪你一起探索宇宙！"
+            "妙蛙種子陪你一起學習！",
+            "胖丁唱歌給你聽～",
+            "伊布進化無限可能！"
         ];
         let currentIndex = 0;
 
