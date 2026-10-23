@@ -78,19 +78,17 @@
             border-color: #cc0000;
         }
 
-        /* 3. 讓精靈圖動起來的關鍵樣式 */
-        .pokemon-sprite {
-            width: 64px;
-            height: 64px;
+        /* 單一主體像素圖片樣式 */
+        .pokemon-img {
+            width: 90px;
+            height: 90px;
             image-rendering: pixelated;
             margin-bottom: 15px;
-            background-repeat: no-repeat;
-            animation: play-anim 1s steps(4) infinite;
+            transition: transform 0.3s;
         }
 
-        @keyframes play-anim {
-            from { background-position: 0px 0px; }
-            to { background-position: -256px 0px; }
+        .card:hover .pokemon-img {
+            transform: scale(1.1) rotate(5deg);
         }
 
         .card-title {
@@ -138,11 +136,10 @@
         }
 
         #companion-img {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             image-rendering: pixelated;
-            background-repeat: no-repeat;
-            animation: play-anim 1s steps(4) infinite;
+            filter: drop-shadow(0 5px 5px rgba(0,0,0,0.2));
         }
     </style>
 </head>
@@ -159,10 +156,13 @@
     <!-- 右下角互動寶可夢夥伴 -->
     <div id="companion-box" onclick="interactCompanion()">
         <div id="companion-speech">點我換夥伴！</div>
-        <div id="companion-img" style="background-image: url('./images/25/Walk.png');"></div>
+        <img id="companion-img" src="https://cdn.jsdelivr.net/gh/JPTER78/pokesurvivor/public/sprites/pokemon/25.png" alt="夥伴">
     </div>
 
     <script>
+        // 使用原作者的 CDN 穩定來源，確保每張圖都只有乾淨的單一主體
+        const getPokemonImgUrl = (id) => `https://cdn.jsdelivr.net/gh/JPTER78/pokesurvivor/public/sprites/pokemon/${id}.png`;
+
         async function loadWhitelist() {
             try {
                 const response = await fetch('whitelist.json');
@@ -180,7 +180,7 @@
                     card.target = '_blank';
 
                     card.innerHTML = `
-                        <div class="pokemon-sprite" style="background-image: url('./images/${item.pokemonId}/Walk.png');"></div>
+                        <img class="pokemon-img" src="${getPokemonImgUrl(item.pokemonId)}" alt="${item.title}">
                         <span class="card-title">${item.title}</span>
                         <span class="card-desc">${item.desc}</span>
                     `;
@@ -188,7 +188,7 @@
                 });
             } catch (error) {
                 console.error('讀取失敗:', error);
-                document.getElementById('card-container').innerHTML = `<p style="color:red; font-weight:bold;">讀取白名單失敗：${error.message}<br>請確認 whitelist.json 是否與 index.html 放在同一層資料夾！</p>`;
+                document.getElementById('card-container').innerHTML = `<p style="color:red; font-weight:bold;">讀取白名單失敗：${error.message}</p>`;
             }
         }
 
@@ -207,7 +207,7 @@
             currentIndex = (currentIndex + 1) % companionIds.length;
             const id = companionIds[currentIndex];
             
-            document.getElementById('companion-img').style.backgroundImage = `url('./images/${id}/Walk.png')`;
+            document.getElementById('companion-img').src = getPokemonImgUrl(id);
             document.getElementById('companion-speech').innerText = speeches[currentIndex];
         }
     </script>
