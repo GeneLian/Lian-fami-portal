@@ -6,15 +6,15 @@
     <title>寶可夢兒童安全入口網</title>
     
     <style>
-        /* 1. 精準對應字型參數來載入本地注音標楷體 */
+        /* 1. 精準宣告並載入本地的 .ttf 字型 */
         @font-face {
             font-family: 'Bpmf Zi Kai Std';
-            src: url('./fonts/BpmfZiHiKaiStd-Regular.woff2') format('woff2');
+            src: url('./fonts/BpmfZiHiKaiStd-Regular.ttf') format('truetype');
             font-weight: 400;
             font-style: normal;
         }
 
-        /* 2. 強制全站套用正確的字型名稱 */
+        /* 2. 強制全站套用注音標楷體 */
         body, h1, h2, h3, p, span, a, div {
             font-family: 'Bpmf Zi Kai Std', "Microsoft JhengHei", sans-serif !important;
         }
@@ -160,7 +160,6 @@
     </div>
 
     <script>
-        // 使用穩定的 CDN 確保圖片為乾淨的單一主體
         const getPokemonImgUrl = (id) => `https://cdn.jsdelivr.net/gh/JPTER78/pokesurvivor/public/sprites/pokemon/${id}.png`;
 
         async function loadWhitelist() {
@@ -191,7 +190,6 @@
 
         loadWhitelist();
 
-        // 右下角互動寶可夢點擊邏輯
         const companionIds = [25, 4, 7, 1, 39, 133]; 
         const speeches = [
             "皮卡皮卡！今天想去哪裡玩？",
