@@ -14,6 +14,7 @@
             font-style: normal;
         }
 
+        /* 2. 強制全站套用注音標楷體 */
         body, h1, h2, h3, p, span, a, div {
             font-family: 'MyBpmfKai', "Microsoft JhengHei", sans-serif !important;
         }
@@ -45,6 +46,7 @@
             margin-bottom: 40px;
         }
 
+        /* 卡片容器 */
         .portal-container {
             display: flex;
             flex-wrap: wrap;
@@ -54,6 +56,7 @@
             margin-bottom: 60px;
         }
 
+        /* 白名單卡片 */
         .card {
             background-color: white;
             border: 4px solid #ffde00;
@@ -75,21 +78,19 @@
             border-color: #cc0000;
         }
 
-        /* 2. 關鍵：將圖片變成「動畫框框」，只顯示其中一格並讓它影格播放 */
+        /* 3. 讓精靈圖動起來的關鍵樣式 */
         .pokemon-sprite {
             width: 64px;
             height: 64px;
             image-rendering: pixelated;
             margin-bottom: 15px;
             background-repeat: no-repeat;
-            /* 這裡套用我們等等寫的動態影格動畫 */
             animation: play-anim 1s steps(4) infinite;
         }
 
-        /* 定義像素動畫影格（假設橫向有 4 格動作） */
         @keyframes play-anim {
             from { background-position: 0px 0px; }
-            to { background-position: -256px 0px; } /* 64px * 4格 = 256px */
+            to { background-position: -256px 0px; }
         }
 
         .card-title {
@@ -114,6 +115,12 @@
             align-items: center;
             cursor: pointer;
             z-index: 1000;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         #companion-speech {
@@ -126,6 +133,8 @@
             color: #cc0000;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             margin-bottom: 8px;
+            position: relative;
+            max-width: 180px;
         }
 
         #companion-img {
@@ -142,10 +151,12 @@
     <h1>⚡ 寶可夢兒童安全入口網 ⚡</h1>
     <p class="subtitle">點擊下方夥伴，前往安心的網站探險吧！</p>
 
+    <!-- 自動從 whitelist.json 產生卡片 -->
     <div class="portal-container" id="card-container">
         <p style="color: #888;">正在呼叫寶可夢白名單清單...</p>
     </div>
 
+    <!-- 右下角互動寶可夢夥伴 -->
     <div id="companion-box" onclick="interactCompanion()">
         <div id="companion-speech">點我換夥伴！</div>
         <div id="companion-img" style="background-image: url('./images/25/Walk.png');"></div>
@@ -155,6 +166,9 @@
         async function loadWhitelist() {
             try {
                 const response = await fetch('whitelist.json');
+                if (!response.ok) {
+                    throw new Error('找不到 whitelist.json 檔案');
+                }
                 const data = await response.json();
                 const container = document.getElementById('card-container');
                 container.innerHTML = ''; 
@@ -165,7 +179,6 @@
                     card.href = item.url;
                     card.target = '_blank';
 
-                    // 這裡使用背景圖片的方式來呈現精靈圖
                     card.innerHTML = `
                         <div class="pokemon-sprite" style="background-image: url('./images/${item.pokemonId}/Walk.png');"></div>
                         <span class="card-title">${item.title}</span>
@@ -174,8 +187,8 @@
                     container.appendChild(card);
                 });
             } catch (error) {
-                console.error('讀取 whitelist.json 失敗:', error);
-                document.getElementById('card-container'].innerHTML = '<p style="color:red;">載入白名單失敗！</p>';
+                console.error('讀取失敗:', error);
+                document.getElementById('card-container').innerHTML = `<p style="color:red; font-weight:bold;">讀取白名單失敗：${error.message}<br>請確認 whitelist.json 是否與 index.html 放在同一層資料夾！</p>`;
             }
         }
 
