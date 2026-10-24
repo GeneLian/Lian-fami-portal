@@ -3,211 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>寶可夢兒童安全入口網</title>
+    <title>SAFARI 兒童安全入口網</title>
     
     <style>
-        /* 1. 精準宣告並載入本地的 .ttf 字型 */
+        /* 1. 宣告你的本地注音標楷體 */
         @font-face {
-            font-family: 'Bpmf Zi Kai Std';
+            font-family: 'MyBpmfKai';
             src: url('./fonts/BpmfZiHiKaiStd-Regular.ttf') format('truetype');
-            font-weight: 400;
+            font-weight: normal;
             font-style: normal;
         }
 
-        /* 2. 強制全站套用注音標楷體 */
-        body, h1, h2, h3, p, span, a, div {
-            font-family: 'Bpmf Zi Kai Std', "Microsoft JhengHei", sans-serif !important;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            background-color: #f7f9fa;
-            background-image: radial-gradient(#e0f2fe 2px, transparent 2px);
-            background-size: 24px 24px;
-            text-align: center;
-            padding: 30px;
-            color: #2b2b2b;
-            margin: 0;
+            font-family: 'MyBpmfKai', "Microsoft JhengHei", sans-serif;
+            background-image: url('./images/map-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
             min-height: 100vh;
+            padding: 40px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
+        header {
+            background-color: rgba(255, 255, 255, 0.92);
+            padding: 15px 35px;
+            border-radius: 16px;
+            border: 4px solid #3b82f6;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
         h1 {
-            color: #cc0000;
-            font-size: 2.8rem;
-            text-shadow: 2px 2px 0px #ffde00;
-            margin-bottom: 5px;
+            font-size: 2.6rem;
+            color: #1e3a8a;
+            letter-spacing: 2px;
         }
 
-        .subtitle {
-            font-size: 1.3rem;
-            color: #4a5568;
-            margin-bottom: 40px;
-        }
-
-        /* 卡片容器 */
         .portal-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 25px;
             max-width: 1000px;
-            margin-bottom: 60px;
+            width: 100%;
         }
 
-        /* 白名單卡片 */
+        /* 網站卡片樣式 */
         .card {
-            background-color: white;
-            border: 4px solid #ffde00;
+            background-color: rgba(255, 255, 255, 0.95);
+            border: 4px solid #f59e0b;
             border-radius: 20px;
             padding: 25px 20px;
-            width: 210px;
+            width: 220px;
             text-decoration: none;
             color: #333;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             display: flex;
             flex-direction: column;
             align-items: center;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
-            border-color: #cc0000;
+            transform: translateY(-6px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+            border-color: #ef4444;
         }
 
-        /* 單一主體像素圖片樣式 */
-        .pokemon-img {
-            width: 90px;
-            height: 90px;
+        /* 靜態寶可夢圖標樣式（絕對穩定、絕不破圖） */
+        .pokemon-icon {
+            width: 64px;
+            height: 64px;
+            object-fit: contain;
             image-rendering: pixelated;
-            margin-bottom: 15px;
-            transition: transform 0.3s;
-        }
-
-        .card:hover .pokemon-img {
-            transform: scale(1.1) rotate(5deg);
+            margin-bottom: 12px;
         }
 
         .card-title {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: bold;
-            color: #2b7a78;
-            margin-bottom: 5px;
+            color: #1f2937;
+            margin-bottom: 6px;
         }
 
         .card-desc {
-            font-size: 0.95rem;
-            color: #666;
-        }
-
-        /* 右下角互動寶可夢夥伴 */
-        #companion-box {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            cursor: pointer;
-            z-index: 1000;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        #companion-speech {
-            background: white;
-            border: 3px solid #ffde00;
-            padding: 8px 15px;
-            border-radius: 15px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: #cc0000;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            margin-bottom: 8px;
-            position: relative;
-            max-width: 180px;
-        }
-
-        #companion-img {
-            width: 100px;
-            height: 100px;
-            image-rendering: pixelated;
-            filter: drop-shadow(0 5px 5px rgba(0,0,0,0.2));
+            font-size: 0.9rem;
+            color: #4b5563;
         }
     </style>
 </head>
 <body>
 
-    <h1>⚡ 寶可夢兒童安全入口網 ⚡</h1>
-    <p class="subtitle">點擊下方夥伴，前往安心的網站探險吧！</p>
+    <header>
+        <h1>SAFARI 兒童安全入口網</h1>
+    </header>
 
-    <!-- 自動從 whitelist.json 產生卡片 -->
+    <!-- 動態生成白名單卡片的容器 -->
     <div class="portal-container" id="card-container">
-        <p style="color: #888;">正在呼叫寶可夢白名單清單...</p>
-    </div>
-
-    <!-- 右下角互動寶可夢夥伴 -->
-    <div id="companion-box" onclick="interactCompanion()">
-        <div id="companion-speech">點我換夥伴！</div>
-        <img id="companion-img" src="https://cdn.jsdelivr.net/gh/JPTER78/pokesurvivor/public/sprites/pokemon/25.png" alt="夥伴">
+        <!-- JavaScript 會自動把 whitelist.json 裡的內容填進這裡 -->
     </div>
 
     <script>
-        const getPokemonImgUrl = (id) => `https://cdn.jsdelivr.net/gh/JPTER78/pokesurvivor/public/sprites/pokemon/${id}.png`;
-
+        // 自動讀取外部 whitelist.json 並動態產生卡片
         async function loadWhitelist() {
             try {
                 const response = await fetch('whitelist.json');
-                const data = await response.json();
+                const sites = await response.json();
                 const container = document.getElementById('card-container');
-                container.innerHTML = ''; 
+                
+                container.innerHTML = ''; // 清空載入中提示
 
-                data.forEach(item => {
+                sites.forEach(site => {
                     const card = document.createElement('a');
                     card.className = 'card';
-                    card.href = item.url;
+                    card.href = site.url;
                     card.target = '_blank';
 
+                    // 這裡對應你本機 images 資料夾中的寶可夢靜態圖或編號路徑
+                    // 例如 ./images/pokemon/25/front.png 或直接對應編號
+                    const imgPath = `./images/pokemon/${site.pokemonId}/front.png`;
+
                     card.innerHTML = `
-                        <img class="pokemon-img" src="${getPokemonImgUrl(item.pokemonId)}" alt="${item.title}">
-                        <span class="card-title">${item.title}</span>
-                        <span class="card-desc">${item.desc}</span>
+                        <img class="pokemon-icon" src="${imgPath}" alt="${site.title}" onerror="this.src='./images/pokemon/1/front.png'">
+                        <span class="card-title">${site.title}</span>
+                        <span class="card-desc">${site.desc}</span>
                     `;
+
                     container.appendChild(card);
                 });
             } catch (error) {
-                console.error('讀取 whitelist.json 失敗:', error);
-                document.getElementById('card-container').innerHTML = '<p style="color:red;">載入白名單失敗！</p>';
+                console.error('無法載入白名單:', error);
+                document.getElementById('card-container').innerHTML = '<p style="color:white; font-size:1.2rem;">載入白名單失敗，請檢查 whitelist.json 格式！</p>';
             }
         }
 
+        // 頁面載入後執行
         loadWhitelist();
-
-        const companionIds = [25, 4, 7, 1, 39, 133]; 
-        const speeches = [
-            "皮卡皮卡！今天想去哪裡玩？",
-            "小火龍準備好囉！",
-            "傑尼傑尼～點上方按鈕出發！",
-            "妙蛙種子陪你一起學習！",
-            "胖丁唱歌給你聽～",
-            "伊布進化無限可能！"
-        ];
-        let currentIndex = 0;
-
-        function interactCompanion() {
-            currentIndex = (currentIndex + 1) % companionIds.length;
-            const id = companionIds[currentIndex];
-            
-            document.getElementById('companion-img').src = getPokemonImgUrl(id);
-            document.getElementById('companion-speech').innerText = speeches[currentIndex];
-        }
     </script>
+
 </body>
 </html>
