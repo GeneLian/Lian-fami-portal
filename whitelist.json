@@ -6,12 +6,6 @@
     "desc": "查注音與國字的好幫手"
   },
   {
-    "title": "CoolMath遊戲",
-    "url": "https://www.coolmathgames.com",
-    "category": "益智數學",
-    "desc": "好玩的邏輯與數學遊戲"
-  },
-  {
     "title": "NASA Kids' Club",
     "url": "https://www.nasa.gov/kidsclub/index.html",
     "category": "科學探索",
@@ -41,5 +35,13 @@
     "category": "寶可夢專區",
     "pokemonId": 25,
     "desc": "查詢各種寶可夢的官方圖鑑與詳細資料"
+  },
+  {
+    "title": "PokéBonk",
+    "url": "https://pokebonk.com/",
+    "category": "趣味遊戲",
+    "pokemonId": 25,
+    "desc": "好玩的寶可夢 3D 生存同人遊戲"
   }
+
 ]
