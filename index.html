@@ -6,10 +6,10 @@
     <title>SAFARI 兒童安全入口網</title>
     
     <style>
-        /* 1. 宣告你的本地注音標楷體 */
+        /* 1. 精準對應你的 .ttf 檔名大小寫：BpmfZihiKaiStd-Regular.ttf */
         @font-face {
-            font-family: 'MyBpmfKai';
-            src: url('./fonts/BpmfZiHiKaiStd-Regular.ttf') format('truetype');
+            font-family: 'BpmfZiKaiStd';
+            src: url('./fonts/BpmfZihiKaiStd-Regular.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
         }
@@ -21,7 +21,8 @@
         }
 
         body {
-            font-family: 'MyBpmfKai', "Microsoft JhengHei", sans-serif;
+            /* 強制全站使用你的注音標楷體 */
+            font-family: 'BpmfZiKaiStd', "Microsoft JhengHei", sans-serif;
             background-image: url('./images/map-bg.jpg');
             background-size: cover;
             background-position: center;
