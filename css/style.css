@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'BpmfZiHiKaiStd';
+    src: url('./fonts/BpmfZiHiKaiStd-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    /* 強制將主要字型設為你的注音標楷體，後面接備用字型 */
+    font-family: 'BpmfZiHiKaiStd', "Microsoft JhengHei", sans-serif;
+}
