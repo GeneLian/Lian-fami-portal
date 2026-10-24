@@ -3,28 +3,24 @@
     "title": "教育部萌典",
     "url": "https://pedia.cloud.edu.tw",
     "category": "學習字典",
-    "pokemonId": 25,
     "desc": "查注音與國字的好幫手"
   },
   {
     "title": "CoolMath遊戲",
     "url": "https://www.coolmathgames.com",
     "category": "益智數學",
-    "pokemonId": 4,
     "desc": "好玩的邏輯與數學遊戲"
   },
   {
     "title": "童書繪本網",
     "url": "https://www.childrensbooksonline.org",
     "category": "閱讀繪本",
-    "pokemonId": 7,
     "desc": "豐富的兒童有聲繪本"
   },
   {
     "title": "NASA Kids' Club",
     "url": "https://www.nasa.gov/kidsclub/index.html",
     "category": "科學探索",
-    "pokemonId": 150,
-    "desc": "跟著寶可夢一起探索宇宙太空"
+    "desc": "跟著太空總署一起探索宇宙"
   }
 ]
