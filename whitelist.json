@@ -12,12 +12,6 @@
     "desc": "好玩的邏輯與數學遊戲"
   },
   {
-    "title": "童書繪本網",
-    "url": "https://www.childrensbooksonline.org",
-    "category": "閱讀繪本",
-    "desc": "豐富的兒童有聲繪本"
-  },
-  {
     "title": "NASA Kids' Club",
     "url": "https://www.nasa.gov/kidsclub/index.html",
     "category": "科學探索",
@@ -30,13 +24,13 @@
     "desc": "好玩的寶可夢小遊戲"
   },
   {
-    "title": "台灣RPG冒險",
+    "title": "台灣夜市遊樂園",
     "url": "https://yes.taiwanrpg.com/",
     "category": "趣味遊戲",
     "desc": "在地風格的冒險小天地"
   },
   {
-    "title": "台北專案應用",
+    "title": "臺北狂飆，去臺北狂飆",
     "url": "https://www.taipei-rush.app/",
     "category": "生活應用",
     "desc": "台北主題的網頁小工具"
