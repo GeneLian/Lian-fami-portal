@@ -22,5 +22,30 @@
     "url": "https://www.nasa.gov/kidsclub/index.html",
     "category": "科學探索",
     "desc": "跟著太空總署一起探索宇宙"
+  },
+  {
+    "title": "寶可夢生存遊戲",
+    "url": "https://pokesurvivor.com/",
+    "category": "趣味遊戲",
+    "desc": "好玩的寶可夢小遊戲"
+  },
+  {
+    "title": "台灣RPG冒險",
+    "url": "https://yes.taiwanrpg.com/",
+    "category": "趣味遊戲",
+    "desc": "在地風格的冒險小天地"
+  },
+  {
+    "title": "台北專案應用",
+    "url": "https://www.taipei-rush.app/",
+    "category": "生活應用",
+    "desc": "台北主題的網頁小工具"
+  },
+  {
+    "title": "寶可夢官方圖鑑",
+    "url": "https://tw.portal-pokemon.com/play/pokedex/",
+    "category": "寶可夢專區",
+    "pokemonId": 25,
+    "desc": "查詢各種寶可夢的官方圖鑑與詳細資料"
   }
 ]
