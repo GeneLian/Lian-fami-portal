@@ -6,12 +6,6 @@
     "desc": "查注音與國字的好幫手"
   },
   {
-    "title": "NASA Kids' Club",
-    "url": "https://www.nasa.gov/kidsclub/index.html",
-    "category": "科學探索",
-    "desc": "跟著太空總署一起探索宇宙"
-  },
-  {
     "title": "寶可夢生存遊戲",
     "url": "https://pokesurvivor.com/",
     "category": "趣味遊戲",
@@ -42,6 +36,14 @@
     "category": "趣味遊戲",
     "pokemonId": 25,
     "desc": "好玩的寶可夢 3D 生存同人遊戲"
+  },
+  {
+    "title": "機甲大戰·台北",
+    "url": "https://fish.ryantsai.com/",
+    "category": "趣味遊戲",
+    "pokemonId": 68,
+    "desc": "機甲對戰風格的網頁遊戲"
   }
+
 
 ]
