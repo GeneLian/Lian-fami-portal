@@ -43,7 +43,15 @@
     "category": "趣味遊戲",
     "pokemonId": 68,
     "desc": "機甲對戰風格的網頁遊戲"
+  },
+  {
+    "title": "Kanto Tactics 戰棋遊戲",
+    "url": "https://einoow.com/kanto-tactics",
+    "category": "趣味遊戲",
+    "pokemonId": 150,
+    "desc": "關都地區主題的戰棋對戰與冒險"
   }
+
 
 
 ]
