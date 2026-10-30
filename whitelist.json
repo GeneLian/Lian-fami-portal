@@ -3,24 +3,27 @@
     "title": "教育部萌典",
     "url": "https://pedia.cloud.edu.tw",
     "category": "學習字典",
+    "pokemonId": 12,
     "desc": "查注音與國字的好幫手"
   },
   {
     "title": "寶可夢生存遊戲",
     "url": "https://pokesurvivor.com/",
-    "category": "趣味遊戲",
+    "pokemonId": 3,
     "desc": "好玩的寶可夢小遊戲"
   },
   {
     "title": "台灣夜市遊樂園",
     "url": "https://yes.taiwanrpg.com/",
     "category": "趣味遊戲",
+    "pokemonId": 9,
     "desc": "在地風格的冒險小天地"
   },
   {
     "title": "臺北狂飆，去臺北狂飆",
     "url": "https://www.taipei-rush.app/",
     "category": "生活應用",
+    "pokemonId": 1007,
     "desc": "台北主題的網頁小工具"
   },
   {
@@ -34,21 +37,21 @@
     "title": "PokéBonk",
     "url": "https://pokebonk.com/",
     "category": "趣味遊戲",
-    "pokemonId": 25,
+    "pokemonId": 60,
     "desc": "好玩的寶可夢 3D 生存同人遊戲"
   },
   {
     "title": "機甲大戰·台北",
     "url": "https://fish.ryantsai.com/",
     "category": "趣味遊戲",
-    "pokemonId": 68,
+    "pokemonId": 649,
     "desc": "機甲對戰風格的網頁遊戲"
   },
   {
     "title": "Kanto Tactics 戰棋遊戲",
     "url": "https://einoow.com/kanto-tactics",
     "category": "趣味遊戲",
-    "pokemonId": 150,
+    "pokemonId": 870,
     "desc": "關都地區主題的戰棋對戰與冒險"
   },
   {
@@ -57,8 +60,14 @@
     "category": "趣味遊戲",
     "pokemonId": 149,
     "desc": "即時瀏覽器寶可夢對戰與對決"
+  },
+  {
+    "title": "Pokémon Arena 2D",
+    "url": "https://poke2darena.com/",
+    "category": "趣味遊戲",
+    "pokemonId": 80,
+    "desc": "線上即時寶可夢 2D 競技場對戰遊戲"
   }
-
 
 
 ]
