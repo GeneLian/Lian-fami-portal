@@ -67,6 +67,13 @@
     "category": "趣味遊戲",
     "pokemonId": 80,
     "desc": "線上即時寶可夢 2D 競技場對戰遊戲"
+  },
+  {
+    "title": "火瑙生活",
+    "url": "https://liaokurl.github.io/hunao-fire/",
+    "category": "趣味專案",
+    "pokemonId": 4,
+    "desc": "火瑙個人專案與網頁分享"
   }
 
 
