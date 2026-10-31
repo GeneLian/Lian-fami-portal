@@ -33,6 +33,30 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            position: relative;
+        }
+
+        /* 強制重新整理按鈕樣式 */
+        .refresh-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #ffffff;
+            border: 3px solid #3b82f6;
+            color: #1e3a8a;
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .refresh-btn:hover {
+            background-color: #eff6ff;
+            transform: scale(1.05);
         }
 
         header {
@@ -106,6 +130,9 @@
 </head>
 <body>
 
+    <!-- 強制重整按鈕 -->
+    <button class="refresh-btn" onclick="forceReload()">🔄 重新整理</button>
+
     <header>
         <h1>SAFARI 兒童安全入口網</h1>
     </header>
@@ -117,10 +144,15 @@
     </div>
 
     <script>
-        // 自動讀取外部 whitelist.json 並動態產生卡片
+        // 強制繞過快取的重新整理函式
+        function forceReload() {
+            window.location.href = window.location.pathname + '?t=' + new Date().getTime();
+        }
+
+        // 自動讀取外部 whitelist.json 並動態產生卡片（帶入時間戳記防快取）
         async function loadWhitelist() {
             try {
-                const response = await fetch('whitelist.json');
+                const response = await fetch('whitelist.json?v=' + new Date().getTime());
                 const sites = await response.json();
                 const container = document.getElementById('card-container');
                 
