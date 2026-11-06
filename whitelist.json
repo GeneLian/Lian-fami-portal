@@ -102,6 +102,13 @@
     "category": "趣味遊戲",
     "pokemonId": 150,
     "desc": "熱門的寶可夢 Roguelike 網頁對戰與冒險遊戲"
+  },
+  {
+    "title": "島嶼星空",
+    "url": "https://shanechen07.github.io/JDPS-SS/",
+    "category": "學習探索",
+    "pokemonId": 151,
+    "desc": "國數社自四科關卡與闖關收集紀念郵票"
   }
 
 ]
