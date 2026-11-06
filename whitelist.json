@@ -95,6 +95,13 @@
     "category": "趣味遊戲",
     "pokemonId": 25,
     "desc": "線上寶可夢風格像素冒險與對戰遊戲"
+  },
+  {
+    "title": "PokéRogue 寶可夢肉鴿冒險",
+    "url": "https://pokerogue.net/",
+    "category": "趣味遊戲",
+    "pokemonId": 150,
+    "desc": "熱門的寶可夢 Roguelike 網頁對戰與冒險遊戲"
   }
 
 ]
